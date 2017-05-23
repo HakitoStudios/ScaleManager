@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent.Vertical"
+    tools:context="havrysh.scalemanager.ScaleActivity">
+
+    <android.support.v7.widget.LinearLayoutCompat style="@style/WideContent.Horizontal">
+        <TextInputLayout></TextInputLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+</android.support.v7.widget.LinearLayoutCompat>
