@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/WideContent"
+    android:layout_margin="10dp"
+    app:cardPreventCornerOverlap="false">
+
+    <android.support.constraint.ConstraintLayout
+        style="@style/WideContent"
+        android:layout_height="100dp"
+        android:padding="9dp">
+
+        <TextView
+            android:id="@+id/per_kg_price_text"
+            style="@style/WrapContent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="per kg" />
+
+        <TextView
+            android:id="@+id/date_text"
+            style="@style/WrapContent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="date" />
+
+        <TextView
+            android:id="@+id/weight_text"
+            style="@style/WrapContent"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="weight" />
+
+        <TextView
+            android:id="@+id/price_text"
+            style="@style/WrapContent"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="price" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

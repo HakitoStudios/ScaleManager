@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/MatchParent.Vertical"
-    tools:context="havrysh.scalemanager.ScaleActivity">
+    tools:context="havrysh.scalemanager.ui.ScaleActivity">
 
-    <android.support.v7.widget.LinearLayoutCompat style="@style/WideContent.Horizontal">
-        <TextInputLayout></TextInputLayout>
+    <android.support.v7.widget.LinearLayoutCompat style="@style/WideContent.Vertical">
+
+        <android.support.design.widget.TextInputLayout style="@style/WideContent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/price_edit_text"
+                style="@style/WideContent"
+                android:hint="Цена за кг (грн)"
+                android:inputType="numberDecimal" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/piece_price_text"
+            style="@style/WrapContent"
+            android:layout_gravity="right"
+            android:textSize="25sp"
+            tools:text="34hrn" />
+
+        <android.support.design.widget.TextInputLayout style="@style/WideContent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/weight_edit_text"
+                style="@style/WideContent"
+                android:hint="Вес (грамм)"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/ok_button"
+            style="@style/WideContent"
+            android:text="Ок" />
     </android.support.v7.widget.LinearLayoutCompat>
 
-
+    <android.support.v7.widget.ContentFrameLayout
+        android:id="@+id/fragment_contaiener"
+        style="@style/MatchParent" />
 </android.support.v7.widget.LinearLayoutCompat>

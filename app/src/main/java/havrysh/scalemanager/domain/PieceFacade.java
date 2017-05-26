@@ -1,10 +1,11 @@
-package havrysh.scalemanager;
+package havrysh.scalemanager.domain;
 
 import com.raizlabs.android.dbflow.sql.language.SQLCondition;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class PieceFacade {
     public Piece save(Piece model) {
@@ -21,6 +22,10 @@ public class PieceFacade {
         if (dateTo != null) {
             conds.add(Piece_Table.date.lessThanOrEq(dateTo));
         }
-        return new Select().from(Piece.class).where((SQLCondition[]) conds.toArray()).queryList();
+        return new Select()
+                .from(Piece.class)
+                .where(conds.toArray(new SQLCondition[0]))
+                .orderBy(Piece_Table.date, false)
+                .queryList();
     }
 }

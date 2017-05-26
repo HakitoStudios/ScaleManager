@@ -1,4 +1,4 @@
-package havrysh.scalemanager;
+package havrysh.scalemanager.domain;
 
 import com.raizlabs.android.dbflow.annotation.Database;
 
