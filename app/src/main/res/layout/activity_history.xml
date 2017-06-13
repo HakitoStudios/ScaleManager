@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent.Vertical"
+    tools:context="havrysh.scalemanager.ui.HistoryActivity">
+
+    <Button
+        android:id="@+id/date_button"
+        style="@style/WideContent"
+        tools:text="13 apr 2017" />
+
+    <FrameLayout
+        android:id="@+id/fragment_contaiener"
+        style="@style/MatchParent" />
+</LinearLayout>

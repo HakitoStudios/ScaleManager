@@ -1,7 +1,10 @@
 package havrysh.scalemanager.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,8 +49,6 @@ public class ScaleActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_contaiener, PiecesFragment.newInstance())
                 .commitNow();
-
-
     }
 
     @Override
@@ -86,6 +87,21 @@ public class ScaleActivity extends AppCompatActivity {
             piecePriceText.setText("");
             return;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.history_action) {
+            startActivity(new Intent(this, HistoryActivity.class));
+            return true;
+        }
+        return false;
     }
 
     @OnClick(R.id.ok_button)

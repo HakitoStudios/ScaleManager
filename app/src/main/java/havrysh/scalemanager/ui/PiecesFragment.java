@@ -1,7 +1,6 @@
 package havrysh.scalemanager.ui;
 
 import android.content.DialogInterface;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,17 +11,34 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import havrysh.scalemanager.R;
+import havrysh.scalemanager.domain.Piece;
 import havrysh.scalemanager.domain.PieceFacade;
 import havrysh.scalemanager.ui.adapter.PieceAdapter;
+import havrysh.scalemanager.utils.FormatUtils;
 
 public class PiecesFragment extends Fragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    @BindView(R.id.overall_count_text)
+    TextView countText;
+
+    @BindView(R.id.overall_price_text)
+    TextView priceText;
+
+    @BindView(R.id.overall_weight_text)
+    TextView weightText;
+
+    @BindView(R.id.empty_text)
+    TextView emptyText;
 
     private PieceAdapter adapter;
     private PieceFacade facade;
@@ -75,12 +91,13 @@ public class PiecesFragment extends Fragment {
                                         .delete();
                                 adapter.swapData(adapter.getPieces());
                                 invalidateItems(dateFrom, dateTo);
+                                recalculateStats();
                             }
                         })
                         .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                adapter.notifyItemChanged(viewHolder.getAdapterPosition());
                             }
                         })
                         .setCancelable(false)
@@ -93,9 +110,30 @@ public class PiecesFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
+    private void recalculateStats() {
+        float weight = 0;
+        float price = 0;
+
+        for (Piece p : adapter.getPieces()) {
+            weight += p.getWeight();
+            price += p.getWeight() * p.getPrice() / 1000;
+        }
+
+        weightText.setText(String.format("%.3f кг", weight / 1000));
+        priceText.setText(FormatUtils.formatMoney(price));
+        countText.setText(adapter.getItemCount() + " шт.");
+
+        emptyText.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+    }
+
+    private void displayPieces(List<Piece> pieces) {
+        adapter.swapData(pieces);
+        recalculateStats();
+    }
+
     public void invalidateItems(Long dateFrom, Long dateTo) {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
-        adapter.swapData(facade.getAll(dateFrom, dateTo));
+        displayPieces(facade.getAll(dateFrom, dateTo));
     }
 }

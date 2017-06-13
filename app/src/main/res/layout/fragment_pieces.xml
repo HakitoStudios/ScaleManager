@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchParent.Vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        style="@style/MatchParent">
+    <LinearLayout style="@style/MatchParent.Vertical">
 
-    </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+        <LinearLayout style="@style/WideContent.Horizontal">
+
+            <TextView
+                android:id="@+id/overall_count_text"
+                style="@style/WrapContent"
+                tools:text="Count" />
+
+            <TextView
+                android:id="@+id/overall_weight_text"
+                style="@style/WideContent"
+                android:layout_weight="1"
+                android:gravity="center"
+                tools:text="Weight" />
+
+            <TextView
+                android:id="@+id/overall_price_text"
+                style="@style/WrapContent"
+                tools:text="Price" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            style="@style/MatchParent">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/empty_text"
+        style="@style/WrapContent"
+        android:layout_gravity="center"
+        android:text="Список пуст"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+</FrameLayout>
